@@ -80,3 +80,11 @@ clean(__dirname + '/temp')
 - glob
 - fs-extra
 - request
+
+## Development
+Checkout the code.
+
+```
+npm install
+npm test
+```
