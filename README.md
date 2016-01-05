@@ -1,7 +1,8 @@
 # Promise Path
-A collection of path methods brought together as promises.
+A collection of path based methods brought together as promises.
 
 ## API
+The API currently supports the following methods:
 - read
 - write
 - find
@@ -88,3 +89,9 @@ Checkout the code.
 npm install
 npm test
 ```
+
+## Changelog
+### 1.0.0
+- Initial release
+- Supported methods: `read`, `write`, `find`, `fetch`, `clean`
+- Created tests
