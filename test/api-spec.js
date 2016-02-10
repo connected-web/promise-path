@@ -52,6 +52,7 @@ describe('API', function() {
                         'fetch.js',
                         'find.js',
                         'read.js',
+                        'run.js',
                         'write.js'
                     ]);
                 })
@@ -82,6 +83,28 @@ describe('API', function() {
                     expect(actualContents).to.equal(expectedContents);
                 })
                 .then(() => api.clean('temp'))
+                .then(done)
+                .catch(done);
+        });
+    });
+
+    describe('run', function() {
+        it('should run the supplied command, and return the result', function(done) {
+            var file = 'test/fixtures/sample.txt';
+            var expected;
+
+            api.read(file, 'utf8')
+                .then(function(body) {
+                    expected = {
+                        error: null,
+                        stdout: body,
+                        stderr: ''
+                    };
+                })
+                .then(() => api.run(`cat ${file}`))
+                .then(function(actual) {
+                    expect(actual).to.deep.equal(expected);
+                })
                 .then(done)
                 .catch(done);
         });

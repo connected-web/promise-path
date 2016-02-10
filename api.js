@@ -3,7 +3,13 @@ var fetch = require('./lib/path/fetch');
 var find = require('./lib/path/find');
 var read = require('./lib/path/read');
 var write = require('./lib/path/write');
+var run = require('./lib/path/run');
 
 module.exports = {
-    clean, fetch, find, read, write
+    clean,
+    fetch,
+    find,
+    read,
+    write,
+    run
 };
