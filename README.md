@@ -77,6 +77,20 @@ clean(__dirname + '/temp')
     });
 ```
 
+### Run
+Use `child_process.exec` to run a command, and return a promise.
+
+```js
+var run = require('promise-path').run;
+
+run('cat package.json')
+    .then(function(result) {
+        console.log('Error', result.error);
+        console.log('Std out', result.stdout);
+        console.log('Std err', result.stderr);
+    });
+```
+
 ## Depdencies
 - glob
 - fs-extra
@@ -91,6 +105,9 @@ npm test
 ```
 
 ## Changelog
+### 1.1.0
+- Added method with test: `run`
+
 ### 1.0.0
 - Initial release
 - Supported methods: `read`, `write`, `find`, `fetch`, `clean`
