@@ -97,6 +97,7 @@ describe('API', function() {
                 .then(function(body) {
                     expected = {
                         error: null,
+                        exitCode: 0,
                         stdout: body,
                         stderr: ''
                     };
