@@ -122,6 +122,9 @@ npm test
 ```
 
 ## Changelog
+### 1.2.0
+- Added `cwd` as a second optional parameter to `run`
+
 ### 1.1.1
 - Reworked `run` command to use `child_process.spawn`
 - Added `exitCode` to the return object on `run`
