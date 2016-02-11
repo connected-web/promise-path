@@ -110,6 +110,28 @@ describe('API', function() {
                 .catch(done);
         });
 
+        it('should be able to run a command in a different working directory, and return the result', function(done) {
+            var path = 'test/fixtures';
+            var file = 'sample.txt';
+            var expected;
+
+            api.read(`${path}/${file}`, 'utf8')
+                .then(function(body) {
+                    expected = {
+                        error: null,
+                        exitCode: 0,
+                        stdout: body,
+                        stderr: ''
+                    };
+                })
+                .then(() => api.run(`cat ${file}`, process.cwd() + '/' + path))
+                .then(function(actual) {
+                    expect(actual).to.deep.equal(expected);
+                })
+                .then(done)
+                .catch(done);
+        });
+
         it('should run a complex chain of asychronous commands, and return the result', function(done) {
             this.timeout(15000);
 

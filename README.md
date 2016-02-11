@@ -86,9 +86,26 @@ var run = require('promise-path').run;
 run('cat package.json')
     .then(function(result) {
         console.log('Error', result.error);
+        console.log('Exit code', result.exitCode);
         console.log('Std out', result.stdout);
         console.log('Std err', result.stderr);
-    });
+    })
+    .catch((result) => console.log(result));
+```
+
+With a current working directory:
+
+```js
+var run = require('promise-path').run;
+
+run('npm install', process.cwd() + '/release')
+    .then(function(result) {
+        console.log('Error', result.error);
+        console.log('Exit code', result.exitCode);
+        console.log('Std out', result.stdout);
+        console.log('Std err', result.stderr);
+    })
+    .catch((result) => console.log(result));
 ```
 
 ## Depdencies
@@ -105,7 +122,6 @@ npm test
 ```
 
 ## Changelog
-
 ### 1.1.1
 - Reworked `run` command to use `child_process.spawn`
 - Added `exitCode` to the return object on `run`
