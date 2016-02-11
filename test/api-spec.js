@@ -109,5 +109,31 @@ describe('API', function() {
                 .then(done)
                 .catch(done);
         });
+
+        it('should run a complex chain of asychronous commands, and return the result', function(done) {
+            this.timeout(15000);
+
+            var expected = {
+                error: null,
+                exitCode: 0,
+                stdout: [{
+                    "dependencies": {},
+                    "from": "denodeify@>=1.2.1 <2.0.0",
+                    "name": "denodeify",
+                    "version": "1.2.1"
+                }],
+                stderr: ''
+            };
+            var actual;
+
+            api.run(`rm -rf node_modules/denodeify`)
+                .then(() => api.run(`npm install denodeify --json`))
+                .then(function(actual) {
+                    actual.stdout = JSON.parse(actual.stdout);
+                    expect(actual).to.deep.equal(expected);
+                })
+                .then(done)
+                .catch(done);
+        });
     });
 });
