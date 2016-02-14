@@ -90,7 +90,7 @@ describe('API', function() {
 
     describe('run', function() {
         it('should run the supplied command, and return the result', function(done) {
-            var file = 'test/fixtures/sample.txt';
+            var file = __dirname + '/fixtures/sample.txt';
             var expected;
 
             api.read(file, 'utf8')
@@ -125,6 +125,27 @@ describe('API', function() {
                     };
                 })
                 .then(() => api.run(`cat ${file}`, process.cwd() + '/' + path))
+                .then(function(actual) {
+                    expect(actual).to.deep.equal(expected);
+                })
+                .then(done)
+                .catch(done);
+        });
+
+        it('should pass environment variables through to the child process', function(done) {
+            var env = {
+                x: 1 + Math.random(),
+                y: 2 + Math.random(),
+                z: 3 + Math.random()
+            };
+            var expected = {
+                error: null,
+                exitCode: 0,
+                stdout: `${env.x} ${env.y} ${env.z}\n`,
+                stderr: ''
+            };
+
+            api.run('node env.js', __dirname + '/fixtures', env)
                 .then(function(actual) {
                     expect(actual).to.deep.equal(expected);
                 })
