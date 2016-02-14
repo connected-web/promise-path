@@ -93,12 +93,14 @@ run('cat package.json')
     .catch((result) => console.log(result));
 ```
 
-With a current working directory:
+With a current working directory (cwd), and custom environment variables (env):
 
 ```js
 var run = require('promise-path').run;
 
-run('npm install', process.cwd() + '/release')
+var cwd = process.cwd() + '/release';
+var env = {HOME: process.cwd()};
+run('npm install', cwd, env)
     .then(function(result) {
         console.log('Error', result.error);
         console.log('Exit code', result.exitCode);
@@ -122,6 +124,9 @@ npm test
 ```
 
 ## Changelog
+### 1.2.1
+- Added `env` : environment variables as option to `run`
+
 ### 1.2.0
 - Added `cwd` as a second optional parameter to `run`
 
