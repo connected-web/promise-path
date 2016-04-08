@@ -15,6 +15,7 @@
     "promise",
     "read",
     "write",
+    "make",
     "find",
     "fetch",
     "clean"

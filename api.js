@@ -3,6 +3,7 @@ var fetch = require('./lib/path/fetch');
 var find = require('./lib/path/find');
 var read = require('./lib/path/read');
 var write = require('./lib/path/write');
+var make = require('./lib/path/make')
 var run = require('./lib/path/run');
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
     find,
     read,
     write,
+    make,
     run
 };

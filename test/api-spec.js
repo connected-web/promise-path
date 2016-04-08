@@ -1,3 +1,4 @@
+const fs = require('fs');
 const api = require('../api');
 const expect = require('chai').expect;
 
@@ -51,6 +52,7 @@ describe('API', function() {
                         'clean.js',
                         'fetch.js',
                         'find.js',
+                        'make.js',
                         'read.js',
                         'run.js',
                         'write.js'
@@ -81,6 +83,37 @@ describe('API', function() {
                 .then(() => api.read(file, 'utf8'))
                 .then(function(actualContents) {
                     expect(actualContents).to.equal(expectedContents);
+                })
+                .then(() => api.clean('temp'))
+                .then(done)
+                .catch(done);
+        });
+    });
+
+    describe('make', function() {
+        it('should make a directory if it does not exist', function(done) {
+            var directory = 'temp/new-directory';
+            api.clean('temp')
+                .then(() => api.make(directory))
+                .then(function(result) {
+                    stats = fs.lstatSync(directory);
+                    // Is it a directory?
+                    expect(stats.isDirectory()).to.equal(true);
+                })
+                .then(() => api.clean('temp'))
+                .then(done)
+                .catch(done);
+        });
+
+        it('should succeed if the directory already exists', function(done) {
+            var directory = 'temp/new-directory';
+            api.clean('temp')
+                .then(() => api.make(directory))
+                .then(() => api.make(directory))
+                .then(function(result) {
+                    stats = fs.lstatSync(directory);
+                    // Is it a directory?
+                    expect(stats.isDirectory()).to.equal(true);
                 })
                 .then(() => api.clean('temp'))
                 .then(done)
