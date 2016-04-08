@@ -77,6 +77,18 @@ clean(__dirname + '/temp')
     });
 ```
 
+### MAke
+Use `mkdirp` to make a directory, and return a promise.
+
+```js
+var make = requre('promise-path').make;
+
+make(__dirname + '/temp')
+    .then(function() {
+        console.log('Temp directory has been created');
+    });
+```
+
 ### Run
 Use `child_process.exec` to run a command, and return a promise.
 
