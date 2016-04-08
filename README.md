@@ -136,6 +136,9 @@ npm test
 ```
 
 ## Changelog
+### 1.2.2
+- Added `make` command
+
 ### 1.2.1
 - Added `env` : environment variables as option to `run`
 
