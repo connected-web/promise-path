@@ -192,12 +192,17 @@ describe('API', function() {
             var expected = {
                 error: null,
                 exitCode: 0,
-                stdout: [{
-                    "dependencies": {},
-                    "from": "denodeify@>=1.2.1 <2.0.0",
-                    "name": "denodeify",
-                    "version": "1.2.1"
-                }],
+                stdout: {
+                    "dependencies": {
+                        "denodeify": {
+                            "from": "denodeify@>=1.2.1 <2.0.0",
+                            "resolved": "https://registry.npmjs.org/denodeify/-/denodeify-1.2.1.tgz",
+                            "version": "1.2.1"
+                        }
+                    },
+                    "name": "promise-path",
+                    "version": "1.2.3"
+                },
                 stderr: ''
             };
             var actual;

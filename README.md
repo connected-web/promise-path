@@ -8,6 +8,8 @@ The API currently supports the following methods:
 - find
 - fetch
 - clean
+- make
+- run
 
 ### Read
 Read the contents of a file, and return the result as a promise.
@@ -77,7 +79,7 @@ clean(__dirname + '/temp')
     });
 ```
 
-### MAke
+### Make
 Use `mkdirp` to make a directory, and return a promise.
 
 ```js
@@ -136,6 +138,10 @@ npm test
 ```
 
 ## Changelog
+### 1.2.3
+- Updated node dependencies
+- Changed run to use `process.env.comspec` on windows, to reduce `ENOENT` errors
+
 ### 1.2.2
 - Added `make` command
 

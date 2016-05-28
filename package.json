@@ -1,6 +1,6 @@
 {
   "name": "promise-path",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Promise based path operations, such as read, write, find, fetch, and clean.",
   "main": "api.js",
   "scripts": {
@@ -28,9 +28,9 @@
   "homepage": "https://github.com/connected-web/promise-path#readme",
   "dependencies": {
     "denodeify": "^1.2.1",
-    "fs-extra": "^0.26.3",
-    "glob": "^6.0.3",
-    "request": "^2.67.0"
+    "fs-extra": "^0.30.0",
+    "glob": "^7.0.3",
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "chai": "^3.4.1",
