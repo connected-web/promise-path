@@ -195,7 +195,7 @@ describe('API', function() {
                 stdout: {
                     "dependencies": {
                         "denodeify": {
-                            "from": "denodeify@>=1.2.1 <2.0.0",
+                            "from": "denodeify@*",
                             "resolved": "https://registry.npmjs.org/denodeify/-/denodeify-1.2.1.tgz",
                             "version": "1.2.1"
                         }

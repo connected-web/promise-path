@@ -67,6 +67,22 @@ fetch('https://raw.githubusercontent.com/connected-web/remote-test/master/info.j
     });
 ```
 
+```js
+var fetch = require('promise-path').fetch;
+
+fetch({
+      url: 'https://api.github.com/repos/connected-web/promise-path/contents/readme',
+      headers: {
+          'Authorization': `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
+          'Accept': 'application/vnd.github.v3.raw',
+          'User-Agent': `My App - node ${process.version}`
+      }
+    })
+    .then(function(contents) {
+        console.log('Remote file:', contents);
+    });
+```
+
 ### Clean
 Remove local files and folders, and return a promise.
 
