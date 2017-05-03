@@ -154,6 +154,10 @@ npm test
 ```
 
 ## Changelog
+### 1.2.4
+- Updated node dependencies
+- Added example for fetching data from the github API with headers
+
 ### 1.2.3
 - Updated node dependencies
 - Changed run to use `process.env.comspec` on windows, to reduce `ENOENT` errors
