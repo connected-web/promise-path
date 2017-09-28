@@ -1,6 +1,6 @@
 {
   "name": "promise-path",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Promise based path operations, such as read, write, find, fetch, and clean.",
   "main": "api.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "request": "*"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "fs-extra": "^3.0.0",
     "mocha": "^3.3.0"
   }

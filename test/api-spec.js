@@ -201,7 +201,7 @@ describe('API', function() {
                         }
                     },
                     "name": "promise-path",
-                    "version": "1.2.3"
+                    "version": "1.2.5"
                 },
                 stderr: ''
             };
