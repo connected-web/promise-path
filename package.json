@@ -28,6 +28,7 @@
   "homepage": "https://github.com/connected-web/promise-path#readme",
   "dependencies": {
     "denodeify": "*",
+    "fs-extra": "^3.0.1",
     "glob": "*",
     "request": "*"
   },
