@@ -154,6 +154,11 @@ npm test
 ```
 
 ## Changelog
+
+### 1.2.6
+- Support quoted spaces in commands
+- e.g. `git commit -m "Some message with spaces"`
+
 ### 1.2.4
 - Updated node dependencies
 - Added example for fetching data from the github API with headers
