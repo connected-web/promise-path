@@ -179,6 +179,38 @@ describe('API', function () {
         .catch(done)
     })
 
+    it('should run a command with quoted value containing spaces', function (done) {
+      const expected = {
+        error: null,
+        exitCode: 1,
+        stdout: '',
+        stderr: 'cat: "the file name": No such file or directory\n'
+      }
+
+      api.run(`cat "the file name"`)
+        .then(function (actual) {
+          expect(actual).to.deep.equal(expected)
+        })
+        .then(done)
+        .catch(done)
+    })
+
+    it('should run a command with quoted values', function (done) {
+      const expected = {
+        error: null,
+        exitCode: 1,
+        stdout: '',
+        stderr: 'cat: "nospacequote": No such file or directory\n'
+      }
+
+      api.run(`cat "nospacequote"`)
+        .then(function (actual) {
+          expect(actual).to.deep.equal(expected)
+        })
+        .then(done)
+        .catch(done)
+    })
+
     it('should run a complex chain of asychronous commands, and return the result', function (done) {
       this.timeout(15000)
 
