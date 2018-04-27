@@ -184,7 +184,7 @@ describe('API', function () {
         error: null,
         exitCode: 1,
         stdout: '',
-        stderr: 'cat: "the file name": No such file or directory\n'
+        stderr: "cat: '\"the file name\"': No such file or directory\n"
       }
 
       api.run(`cat "the file name"`)
@@ -200,7 +200,7 @@ describe('API', function () {
         error: null,
         exitCode: 1,
         stdout: '',
-        stderr: 'cat: "nospacequote": No such file or directory\n'
+        stderr: "cat: '\"nospacequote\"': No such file or directory\n"
       }
 
       api.run(`cat "nospacequote"`)
@@ -217,24 +217,14 @@ describe('API', function () {
       const expected = {
         error: null,
         exitCode: 0,
-        stdout: {
-          'dependencies': {
-            'denodeify': {
-              'from': 'denodeify@*',
-              'resolved': 'https://registry.npmjs.org/denodeify/-/denodeify-1.2.1.tgz',
-              'version': '1.2.1'
-            }
-          },
-          'name': 'promise-path',
-          'version': '1.2.5'
-        },
+        stdout: '',
         stderr: ''
       }
 
-      api.run(`rm -rf node_modules/denodeify`)
-        .then(() => api.run(`npm install denodeify --json`))
+      api.run(`touch hello.txt`)
+        .then(() => api.run(`cat hello.txt`))
+        .then(() => api.run(`rm hello.txt`))
         .then(function (actual) {
-          actual.stdout = JSON.parse(actual.stdout)
           expect(actual).to.deep.equal(expected)
         })
         .then(done)
