@@ -87,9 +87,10 @@ Remove local files and folders, and return a promise.
 
 ```js
 const { clean } = require('promise-path')
+const path = require('path')
 
 let promise = (async () => {
-  await clean(__dirname + '/temp')
+  await clean(path.join(__dirname, '/temp'))
   console.log('Temp directory has been removed')
 })
 ```
@@ -99,9 +100,10 @@ Use `mkdirp` to make a directory, and return a promise.
 
 ```js
 const { make } = requre('promise-path')
+const path = require('path')
 
 let promise = (async () => {
-  await make(__dirname + '/temp')
+  await make(path.join(__dirname, '/temp'))
   console.log('Temp directory has been created')
 })()
 ```

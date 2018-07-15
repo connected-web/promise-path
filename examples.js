@@ -1,5 +1,6 @@
 /* Harness code for the examples in README.md */
 const { read, write, find, fetch, clean, make, run } = require('./api')
+const path = require('path')
 
 let promise = (async () => {
   // Read
@@ -36,11 +37,11 @@ let promise = (async () => {
   console.log('Remote file:', apiContents)
 
   // Clean
-  await clean(__dirname + '/temp')
+  await clean(path.join(__dirname, '/temp'))
   console.log('Temp directory has been removed')
 
   // Make
-  await make(__dirname + '/temp')
+  await make(path.join(__dirname, '/temp'))
   console.log('Temp directory has been created')
 
   // Run
@@ -50,8 +51,7 @@ let promise = (async () => {
     console.log('Exit code', result.exitCode)
     console.log('Std out', result.stdout)
     console.log('Std err', result.stderr)
-  }
-  catch(ex) {
+  } catch (ex) {
     console.error(ex)
   }
 
@@ -64,8 +64,9 @@ let promise = (async () => {
     console.log('Exit code', result.exitCode)
     console.log('Std out', result.stdout)
     console.log('Std err', result.stderr)
-  }
-  catch(ex) {
+  } catch (ex) {
     console.error(ex)
   }
 })()
+
+console.log('I promise to do all the things... eventually:', promise)
