@@ -36,6 +36,7 @@
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "standard": "*"
+    "standard": "*",
+    "npm": "^6.2.0"
   }
 }
