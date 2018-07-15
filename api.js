@@ -1,10 +1,10 @@
-var clean = require('./lib/path/clean')
-var fetch = require('./lib/path/fetch')
-var find = require('./lib/path/find')
-var read = require('./lib/path/read')
-var write = require('./lib/path/write')
-var make = require('./lib/path/make')
-var run = require('./lib/path/run')
+const clean = require('./lib/path/clean')
+const fetch = require('./lib/path/fetch')
+const find = require('./lib/path/find')
+const read = require('./lib/path/read')
+const write = require('./lib/path/write')
+const make = require('./lib/path/make')
+const run = require('./lib/path/run')
 
 module.exports = {
   clean,
