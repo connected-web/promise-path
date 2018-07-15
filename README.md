@@ -60,8 +60,8 @@ Retrieve a remote file, and return a promise.
 const { fetch } = require('promise-path')
 
 let promise = (async () => {
-  const contents = await fetch('https://raw.githubusercontent.com/connected-web/remote-test/master/info.json')
-  console.log('Remote file:', contents)
+  const fileContents = await fetch('https://raw.githubusercontent.com/connected-web/remote-test/master/info.json')
+  console.log('Remote file:', fileContents)
 })()
 ```
 
@@ -69,7 +69,8 @@ let promise = (async () => {
 const { fetch } = require('promise-path')
 
 let promise = (async () => {
-  const contents = await fetch({
+  const GITHUB_PERSONAL_ACCESS_TOKEN = process.argv[1] || ''
+  const apiContents = await fetch({
     url: 'https://api.github.com/repos/connected-web/promise-path/contents/readme',
     headers: {
       'Authorization': `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
@@ -77,7 +78,7 @@ let promise = (async () => {
       'User-Agent': `My App - node ${process.version}`
     }
   })
-  console.log('Remote file:', contents)
+  console.log('Remote file:', apiContents)
 })()
 ```
 
