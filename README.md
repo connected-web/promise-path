@@ -1,15 +1,17 @@
 # Promise Path
-A collection of path based methods brought together as promises.
+A collection of promise based path operations including `read`, `write`, `find`, `fetch`, `make`, `clean`, and `run`.
+
+Quick start:
+```
+npm install promise-path
+```
+Then pick the features you need:
+```
+const { read, write, find, fetch, run, make, clean } = require('promise-path')
+```
 
 ## API
-The API currently supports the following methods:
-- read
-- write
-- find
-- fetch
-- clean
-- make
-- run
+The API currently supports the following methods `read`, `write`, `find`, `fetch`, `make`, `clean`, and `run` as follows:
 
 ### Read
 Read the contents of a file, and return the result as a promise.
@@ -164,6 +166,10 @@ npm test
 ```
 
 ## Changelog
+
+### 1.2.7
+- Rewrite all tests and examples using async await style
+- Add `examples.js` file to harness worked examples in README.md
 
 ### 1.2.6
 - Support quoted spaces in commands

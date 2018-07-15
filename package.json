@@ -1,7 +1,7 @@
 {
   "name": "promise-path",
-  "version": "1.2.6",
-  "description": "Promise based path operations, such as read, write, find, fetch, and clean.",
+  "version": "1.2.7",
+  "description": "Promise based path operations including read, write, find, fetch, make, clean, and run.",
   "main": "api.js",
   "scripts": {
     "test": "standard && mocha",
@@ -36,7 +36,6 @@
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "standard": "*",
-    "npm": "^6.2.0"
+    "standard": "*"
   }
 }
