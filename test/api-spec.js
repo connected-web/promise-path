@@ -4,8 +4,8 @@ const path = require('path')
 const api = require('../api')
 const expect = require('chai').expect
 
-describe('API', function () {
-  describe('clean', function () {
+describe('API', () => {
+  describe('clean', () => {
     const someFile = 'temp/some-file.txt'
     beforeEach(function (done) {
       api.write(someFile, 'Some Data').then(done).catch(done)
@@ -14,7 +14,7 @@ describe('API', function () {
     it('should remove all files and folders in a directory', function (done) {
       api.clean('temp')
         .then(() => api.read(someFile))
-        .then(function () {
+        .then(() => {
           done('Unexpected file still exists')
         }).catch(function (ex) {
           done()
@@ -22,7 +22,7 @@ describe('API', function () {
     })
   })
 
-  describe('fetch', function () {
+  describe('fetch', () => {
     const remoteFile = 'https://raw.githubusercontent.com/connected-web/remote-test/master/info.json'
     it('should fetch a remote file', function (done) {
       api.fetch(remoteFile)
@@ -35,7 +35,7 @@ describe('API', function () {
     })
   })
 
-  describe('find', function () {
+  describe('find', () => {
     it('should return a list of files based on a glob pattern', function (done) {
       const dir = 'lib/path/'
       api.find(path.join(dir, '*.js'))
@@ -56,7 +56,7 @@ describe('API', function () {
     })
   })
 
-  describe('read', function () {
+  describe('read', () => {
     it('should read the contents of a file', function (done) {
       api.read(path.join(__dirname, 'fixtures/sample.txt'), 'utf8')
         .then(function (contents) {
@@ -67,7 +67,7 @@ describe('API', function () {
     })
   })
 
-  describe('write', function () {
+  describe('write', () => {
     it('should write contents to a file', function (done) {
       const file = 'temp/test.log'
       const expectedContents = 'Sample log with sample text'
@@ -83,7 +83,7 @@ describe('API', function () {
     })
   })
 
-  describe('make', function () {
+  describe('make', () => {
     it('should make a directory if it does not exist', function (done) {
       const directory = 'temp/new-directory'
       api.clean('temp')
@@ -114,7 +114,7 @@ describe('API', function () {
     })
   })
 
-  describe('run', function () {
+  describe('run', () => {
     it('should run the supplied command, and return the result', function (done) {
       const file = path.join(__dirname, 'fixtures/sample.txt')
       let expected
