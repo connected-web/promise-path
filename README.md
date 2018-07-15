@@ -15,138 +15,145 @@ The API currently supports the following methods:
 Read the contents of a file, and return the result as a promise.
 
 ```js
-var read = require('promise-path').read;
+const { read } = require('promise-path')
 
-read('README.md', 'utf8')
-    .then(function(contents) {
-        console.log(contents);
-    });
+let promise = (async () => {
+  const readme = await read('README.md', 'utf8')
+  console.log('Readme file:', readme)
 
-read('package.json')
-    .then(JSON.parse)
-    .then(function(json) {
-        console.log(JSON.stringify(json), null, '  ');
-    });
+  const json = JSON.parse(await read('package.json'))
+  console.log(JSON.stringify(json, null, '  '))
+})()
 ```
 
 ### Write
 Write contents to a file, and return a promise.
 
 ```js
-var write = require('promise-path').write;
+const { write } = require('promise-path')
 
-var log = ['message 1', 'message 2', 'message 3'];
-var file = 'output.log';
-write(file, log.join('\n'))
-    .then(function() {
-        console.log('Contents written to', file);
-    });
+let promise = (async () => {
+  const log = ['message 1', 'message 2', 'message 3']
+  const file = 'output.log'
+  await write(file, log.join('\n'))
+  console.log('Contents written to', file)
+})()
+
 ```
 
 ### Find
 Find files that match a pattern, and return a promise.
 
 ```js
-var find = require('promise-path').find;
+const { find } = require('promise-path')
 
-find('/**/*.js')
-    .then(function(files) {
-        console.log('JS files:', files);
-    });
+let promise = (async () => {
+  const filepaths = await find('./lib/**/*.js')
+  console.log('JS files:', filepaths)
+})()
 ```
 
 ### Fetch
 Retrieve a remote file, and return a promise.
 
 ```js
-var fetch = require('promise-path').fetch;
+const { fetch } = require('promise-path')
 
-fetch('https://raw.githubusercontent.com/connected-web/remote-test/master/info.json')
-    .then(function(contents) {
-        console.log('Remote file:', contents);
-    });
+let promise = (async () => {
+  const contents = await fetch('https://raw.githubusercontent.com/connected-web/remote-test/master/info.json')
+  console.log('Remote file:', contents)
+})()
 ```
 
 ```js
-var fetch = require('promise-path').fetch;
+const { fetch } = require('promise-path')
 
-fetch({
-      url: 'https://api.github.com/repos/connected-web/promise-path/contents/readme',
-      headers: {
-          'Authorization': `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
-          'Accept': 'application/vnd.github.v3.raw',
-          'User-Agent': `My App - node ${process.version}`
-      }
-    })
-    .then(function(contents) {
-        console.log('Remote file:', contents);
-    });
+let promise = (async () => {
+  const contents = await fetch({
+    url: 'https://api.github.com/repos/connected-web/promise-path/contents/readme',
+    headers: {
+      'Authorization': `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
+      'Accept': 'application/vnd.github.v3.raw',
+      'User-Agent': `My App - node ${process.version}`
+    }
+  })
+  console.log('Remote file:', contents)
+})()
 ```
 
 ### Clean
 Remove local files and folders, and return a promise.
 
 ```js
-var clean = require('promise-path').clean;
+const { clean } = require('promise-path')
 
-clean(__dirname + '/temp')
-    .then(function() {
-        console.log('Temp directory has been removed');
-    });
+let promise = (async () => {
+  await clean(__dirname + '/temp')
+  console.log('Temp directory has been removed')
+})
 ```
 
 ### Make
 Use `mkdirp` to make a directory, and return a promise.
 
 ```js
-var make = requre('promise-path').make;
+const { make } = requre('promise-path')
 
-make(__dirname + '/temp')
-    .then(function() {
-        console.log('Temp directory has been created');
-    });
+let promise = (async () => {
+  await make(__dirname + '/temp')
+  console.log('Temp directory has been created')
+})()
 ```
 
 ### Run
 Use `child_process.exec` to run a command, and return a promise.
 
 ```js
-var run = require('promise-path').run;
+const  { run } = require('promise-path')
 
-run('cat package.json')
-    .then(function(result) {
-        console.log('Error', result.error);
-        console.log('Exit code', result.exitCode);
-        console.log('Std out', result.stdout);
-        console.log('Std err', result.stderr);
-    })
-    .catch((result) => console.log(result));
+let promise = (async () => {
+  try {
+    const result = await run('cat package.json')
+    console.log('Error', result.error)
+    console.log('Exit code', result.exitCode)
+    console.log('Std out', result.stdout)
+    console.log('Std err', result.stderr)
+  }
+  catch(ex) {
+    console.error(ex)
+  }
+})()
 ```
 
 With a current working directory (cwd), and custom environment variables (env):
 
 ```js
-var run = require('promise-path').run;
+const { run } = require('promise-path')
 
-var cwd = process.cwd() + '/release';
-var env = {HOME: process.cwd()};
-run('npm install', cwd, env)
-    .then(function(result) {
-        console.log('Error', result.error);
-        console.log('Exit code', result.exitCode);
-        console.log('Std out', result.stdout);
-        console.log('Std err', result.stderr);
-    })
-    .catch((result) => console.log(result));
+let promise = (async () => {
+  const cwd = process.cwd()
+  const env = {HOME: process.cwd()}
+  try {
+    const result = await run('npm install', cwd, env)
+    console.log('Error', result.error)
+    console.log('Exit code', result.exitCode)
+    console.log('Std out', result.stdout)
+    console.log('Std err', result.stderr)
+  }
+  catch(ex) {
+    console.error(ex)
+  }
+})()
 ```
 
 ## Depdencies
+- denodeify
 - glob
 - fs-extra
 - request
 
 ## Development
-Checkout the code.
+Checkout the code, then:
 
 ```
 npm install
