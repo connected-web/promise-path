@@ -1,6 +1,7 @@
 /* Harness code for the examples in README.md */
-const { read, write, find, fetch, clean, make, run } = require('./api')
-const path = require('path')
+const api = require('./api')
+const { read, write, find, fetch, clean, make, run } = api
+const position = api.position(__dirname)
 
 let promise = (async () => {
   // Read
@@ -36,12 +37,16 @@ let promise = (async () => {
   })
   console.log('Remote file:', apiContents)
 
+  // Position
+  const tempPath = position('/temp')
+  console.log('Temp directory lives at:', tempPath)
+
   // Clean
-  await clean(path.join(__dirname, '/temp'))
+  await clean(tempPath)
   console.log('Temp directory has been removed')
 
   // Make
-  await make(path.join(__dirname, '/temp'))
+  await make(tempPath)
   console.log('Temp directory has been created')
 
   // Run

@@ -42,6 +42,7 @@ describe('API', () => {
         'fetch.js',
         'find.js',
         'make.js',
+        'position.js',
         'read.js',
         'run.js',
         'write.js'
@@ -97,6 +98,15 @@ describe('API', () => {
     })
   })
 
+  describe('position', () => {
+    it('should initialse a function that positions relative to the supplied path', () => {
+      const position = api.position('/somewhere/away/')
+      const actual = position('/elsewhere/here.dat')
+      const expected = '/somewhere/away/elsewhere/here.dat'
+      expect(actual).to.equal(expected)
+    })
+  })
+
   describe('run', () => {
     it('should run the supplied command, and return the result', async () => {
       const file = path.join(__dirname, 'fixtures/sample.txt')
@@ -146,7 +156,7 @@ describe('API', () => {
         error: null,
         exitCode: 1,
         stdout: '',
-        stderr: "cat: '\"the file name\"': No such file or directory\n"
+        stderr: 'cat: "the file name": No such file or directory\n'
       }
       const actual = await api.run(`cat "the file name"`)
       expect(actual).to.deep.equal(expected)
@@ -157,7 +167,7 @@ describe('API', () => {
         error: null,
         exitCode: 1,
         stdout: '',
-        stderr: "cat: '\"nospacequote\"': No such file or directory\n"
+        stderr: 'cat: "nospacequote": No such file or directory\n'
       }
       const actual = await api.run(`cat "nospacequote"`)
       expect(actual).to.deep.equal(expected)
