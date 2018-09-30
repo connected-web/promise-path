@@ -101,13 +101,21 @@ let promise = (async () => {
 Use `mkdirp` to make a directory, and return a promise.
 
 ```js
-const { make } = requre('promise-path')
+const { make } = require('promise-path')
 const path = require('path')
 
 let promise = (async () => {
   await make(path.join(__dirname, '/temp'))
   console.log('Temp directory has been created')
 })()
+```
+
+### Position
+Create a function that helps you position new paths relative to a base path:
+```js
+const position = require('promise-path')(__dirname, '../data')
+const filepath = position('item-list.json')
+console.log('Avoids having to use path.join directly:', filepath)
 ```
 
 ### Run

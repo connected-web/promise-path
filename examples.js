@@ -6,10 +6,11 @@ const position = api.position(__dirname)
 let promise = (async () => {
   // Read
   const readme = await read('README.md', 'utf8')
-  console.log('Readme file:', readme)
+  console.log('Readme file:', readme.length, 'bytes', 'First 100 characters:', readme.substring(0, 100), '...')
 
   const json = JSON.parse(await read('package.json'))
-  console.log(JSON.stringify(json, null, '  '))
+  const jsonText = JSON.stringify(json, null, '  ')
+  console.log('Package.json:', jsonText.length, 'bytes', 'First 100 characters:', jsonText.substring(0, 100), '...')
 
   // Write
   const log = ['message 1', 'message 2', 'message 3']
@@ -35,7 +36,7 @@ let promise = (async () => {
       'User-Agent': `My App - node ${process.version}`
     }
   })
-  console.log('Remote file:', apiContents)
+  console.log('Remote file:', apiContents.length, 'bytes', 'First 100 characters:', apiContents.substring(0, 100), '...')
 
   // Position
   const tempPath = position('/temp')
