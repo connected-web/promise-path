@@ -175,6 +175,10 @@ npm test
 
 ## Changelog
 
+### 1.3.0
+- Add `position` command to create a path friendly helper function
+- Update `examples.js` and fix typos in README.md
+
 ### 1.2.7
 - Rewrite all tests and examples using async await style
 - Add `examples.js` file to harness worked examples in README.md

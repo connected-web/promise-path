@@ -1,7 +1,7 @@
 {
   "name": "promise-path",
-  "version": "1.2.7",
-  "description": "Promise based path operations including read, write, find, fetch, make, clean, and run.",
+  "version": "1.3.0",
+  "description": "Promise based path operations including read, write, find, fetch, make, clean, position, and run.",
   "main": "api.js",
   "scripts": {
     "test": "standard && mocha",
@@ -19,7 +19,9 @@
     "make",
     "find",
     "fetch",
-    "clean"
+    "clean",
+    "position",
+    "run"
   ],
   "author": "John Beech",
   "license": "ISC",
