@@ -175,6 +175,9 @@ npm test
 
 ## Changelog
 
+### 1.3.1
+- Update package dependencies to latest versions
+
 ### 1.3.0
 - Add `position` command to create a path friendly helper function
 - Update `examples.js` and fix typos in README.md
