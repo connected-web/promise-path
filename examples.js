@@ -63,7 +63,7 @@ let promise = (async () => {
 
   // Run with cwd and env
   const cwd = process.cwd()
-  const env = {HOME: process.cwd()}
+  const env = { HOME: process.cwd() }
   try {
     const result = await run('npm install', cwd, env)
     console.log('Error', result.error)
