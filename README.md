@@ -1,5 +1,5 @@
 # Promise Path
-A collection of promise based path operations including `read`, `write`, `find`, `fetch`, `make`, `clean`, and `run`.
+A collection of promise based path operations including `read`, `write`, `find`, `fetch`, `make`, `clean`, `position`, and `run`.
 
 Quick start:
 ```
@@ -7,11 +7,11 @@ npm install promise-path
 ```
 Then pick the features you need:
 ```
-const { read, write, find, fetch, run, make, clean } = require('promise-path')
+const { read, write, find, fetch, make, clean, position, run } = require('promise-path')
 ```
 
 ## API
-The API currently supports the following methods `read`, `write`, `find`, `fetch`, `make`, `clean`, and `run` as follows:
+The API currently supports the following methods `read`, `write`, `find`, `fetch`, `make`, `clean`, `position`, and `run` as follows:
 
 ### Read
 Read the contents of a file, and return the result as a promise.
@@ -113,7 +113,7 @@ let promise = (async () => {
 ### Position
 Create a function that helps you position new paths relative to a base path:
 ```js
-const position = require('promise-path')(__dirname, '../data')
+const { position } = require('promise-path')(__dirname, '../data')
 const filepath = position('item-list.json')
 console.log('Avoids having to use path.join directly:', filepath)
 ```
