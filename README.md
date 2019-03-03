@@ -175,6 +175,9 @@ npm test
 
 ## Changelog
 
+### 1.4.0
+- Remove dependency the `denodeify` package
+
 ### 1.3.1
 - Update package dependencies to latest versions
 
