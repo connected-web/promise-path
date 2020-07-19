@@ -159,6 +159,7 @@ describe('API', () => {
         stderr: 'cat: "the file name": No such file or directory\n'
       }
       const actual = await api.run('cat "the file name"')
+      actual.stderr = actual.stderr.replace(/'/g, '')
       expect(actual).to.deep.equal(expected)
     })
 
@@ -170,6 +171,7 @@ describe('API', () => {
         stderr: 'cat: "nospacequote": No such file or directory\n'
       }
       const actual = await api.run('cat "nospacequote"')
+      actual.stderr = actual.stderr.replace(/'/g, '')
       expect(actual).to.deep.equal(expected)
     })
 
