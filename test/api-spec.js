@@ -28,7 +28,7 @@ describe('API', () => {
     it('should fetch a remote file', async () => {
       const file = await api.fetch(remoteFile)
       const data = JSON.parse(file)
-      expect(data.message).to.equal(`If you're reading this JSON file you've successfully accessed the remote test`)
+      expect(data.message).to.equal('If you\'re reading this JSON file you\'ve successfully accessed the remote test')
     })
   })
 
@@ -54,7 +54,7 @@ describe('API', () => {
   describe('read', () => {
     it('should read the contents of a file', async () => {
       const contents = await api.read(path.join(__dirname, 'fixtures/sample.txt'), 'utf8')
-      expect(contents).to.equal(`Sample file with sample contents.`)
+      expect(contents).to.equal('Sample file with sample contents.')
     })
   })
 
@@ -158,7 +158,8 @@ describe('API', () => {
         stdout: '',
         stderr: 'cat: "the file name": No such file or directory\n'
       }
-      const actual = await api.run(`cat "the file name"`)
+      const actual = await api.run('cat "the file name"')
+      actual.stderr = actual.stderr.replace(/'/g, '')
       expect(actual).to.deep.equal(expected)
     })
 
@@ -169,7 +170,8 @@ describe('API', () => {
         stdout: '',
         stderr: 'cat: "nospacequote": No such file or directory\n'
       }
-      const actual = await api.run(`cat "nospacequote"`)
+      const actual = await api.run('cat "nospacequote"')
+      actual.stderr = actual.stderr.replace(/'/g, '')
       expect(actual).to.deep.equal(expected)
     })
 
@@ -180,9 +182,9 @@ describe('API', () => {
         stdout: '',
         stderr: ''
       }
-      await api.run(`touch hello.txt`)
-      await api.run(`cat hello.txt`)
-      const actual = await api.run(`rm hello.txt`)
+      await api.run('touch hello.txt')
+      await api.run('cat hello.txt')
+      const actual = await api.run('rm hello.txt')
       expect(actual).to.deep.equal(expected)
     }).timeout(1500)
   })
