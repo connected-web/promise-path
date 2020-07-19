@@ -30,13 +30,13 @@
   },
   "homepage": "https://github.com/connected-web/promise-path#readme",
   "dependencies": {
-    "fs-extra": "*",
-    "glob": "*",
-    "request": "*"
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6",
+    "request": "^2.88.2"
   },
   "devDependencies": {
-    "chai": "*",
-    "mocha": "*",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
     "standard": "^14.3.4"
   }
 }
