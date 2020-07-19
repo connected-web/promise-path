@@ -3,7 +3,7 @@ const api = require('./api')
 const { read, write, find, fetch, clean, make, run } = api
 const position = api.position(__dirname)
 
-let promise = (async () => {
+const promise = (async () => {
   // Read
   const readme = await read('README.md', 'utf8')
   console.log('Readme file:', readme.length, 'bytes', 'First 100 characters:', readme.substring(0, 100), '...')
@@ -31,8 +31,8 @@ let promise = (async () => {
   const apiContents = await fetch({
     url: 'https://api.github.com/repos/connected-web/promise-path/contents/readme',
     headers: {
-      'Authorization': `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
-      'Accept': 'application/vnd.github.v3.raw',
+      Authorization: `token ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
+      Accept: 'application/vnd.github.v3.raw',
       'User-Agent': `My App - node ${process.version}`
     }
   })
