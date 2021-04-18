@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/connected-web/promise-path#readme",
   "dependencies": {
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^9.1.0",
     "glob": "^7.1.6",
     "request": "^2.88.2"
   },
