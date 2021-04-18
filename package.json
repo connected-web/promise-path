@@ -1,6 +1,6 @@
 {
   "name": "promise-path",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Promise based path operations including read, write, find, fetch, make, clean, position, and run.",
   "main": "api.js",
   "scripts": {
