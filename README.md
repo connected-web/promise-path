@@ -159,7 +159,7 @@ let promise = (async () => {
 })()
 ```
 
-## Depdencies
+## Dependencies
 - denodeify
 - glob
 - fs-extra
