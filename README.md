@@ -175,6 +175,9 @@ npm test
 
 ## Changelog
 
+### 1.4.4
+- Merge dependabot patch bumping json5 from 1.0.1 to 1.0.2
+
 ### 1.4.3
 - Update package dependencies to latest versions
 
